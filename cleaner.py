@@ -3,13 +3,17 @@ def createIfNotExist(folders):
     if not os.path.exists(folders):
         os.makedirs(folders)
 
+def move(folderName,files):
+    for file in files:
+        os.replace(file,f"{folderName}/{files}")
+
 files= os.listdir()
 files.remove("cleaner.py")
 print(files)
-createIfNotExist('images')
-createIfNotExist('docs')
-createIfNotExist('apps')
-createIfNotExist('others')
+createIfNotExist('Images')
+createIfNotExist('Docs')
+createIfNotExist('Apps')
+createIfNotExist('Others')
 
 docExt=[".txt",".pdf",".doc",".docx"]
 docs=[file for file in files if os.path.splitext(file)[1].lower() in docExt]
@@ -27,3 +31,6 @@ for file in files:
     ext= os.path.splitext(file)[1].lower()
     if(ext not in appExt) and (ext not in docExt) and (ext not in imgExt):
         others.append(file)
+move("Images",images)
+
+
