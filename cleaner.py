@@ -29,8 +29,10 @@ print(apps)
 others=[]
 for file in files:
     ext= os.path.splitext(file)[1].lower()
-    if(ext not in appExt) and (ext not in docExt) and (ext not in imgExt):
+    if(ext not in appExt) and (ext not in docExt) and (ext not in imgExt) and os.path.isfile(file):
         others.append(file)
 move("Images",images)
-
+move("Apps",apps)
+move("Docs",docs)
+move("Others",others)
 
